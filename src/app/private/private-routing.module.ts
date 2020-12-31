@@ -1,16 +1,24 @@
 import { NgModule } from '@angular/core';
-import { PreloadAllModules, RouterModule, Routes } from '@angular/router';
+import { RouterModule, Routes } from '@angular/router';
+import { PrivateComponent } from './private.component';
 
 const routes: Routes = [
   {
     path: '',
-    redirectTo: 'app',
-    pathMatch: 'full'
+    component: PrivateComponent,
+    children: [
+        {
+          path: '',
+          loadChildren: () => import('./app/app.module').then( m => m.AppPageModule)
+        },
+        {
+          path: '**',
+          redirectTo: '',
+          pathMatch: 'full'
+        },
+    ]
   },
-  {
-    path: 'app',
-    loadChildren: () => import('./app/app.module').then( m => m.AppPageModule)
-  },
+ 
 ];
 
 @NgModule({

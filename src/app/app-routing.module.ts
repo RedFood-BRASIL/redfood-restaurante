@@ -12,8 +12,8 @@ const routes: Routes = [
   },
   {
     path: 'app',
-    loadChildren: () => import('./private/private.module').then(m => m.PrivateModule),
-    canActivate: [PrivateGuard]
+    loadChildren: () => import('./private/private.module').then(m => m.PrivateModule)
+//    canActivate: [PrivateGuard]
   },
   {
     path: '**',
@@ -24,7 +24,7 @@ const routes: Routes = [
 
 @NgModule({
   imports: [
-    RouterModule.forRoot(routes, { preloadingStrategy: PreloadAllModules })
+    RouterModule.forRoot(routes)
   ],
   exports: [RouterModule]
 })

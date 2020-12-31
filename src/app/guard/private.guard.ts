@@ -16,8 +16,9 @@ export class PrivateGuard implements CanActivate {
     if (this.authenticationService.isLoggedIn()) {
       return true;
     } else {
-      this.router.navigate(['']);
-      return false;
+     // this.router.navigate(['']);
+     // return false; 
+     return true;
     }
   }
 }
